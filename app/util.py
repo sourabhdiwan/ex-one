@@ -15,7 +15,7 @@ def fetch_gitlab_data(endpoint):
     retry_strategy = Retry(
         total=3,  # Number of retries
         status_forcelist=[429, 500, 502, 503, 504],  # Retry on these status codes
-        method_whitelist=["HEAD", "GET", "OPTIONS"],  # Retry on these methods
+        allowed_methods=["HEAD", "GET", "OPTIONS"],  # Retry on these methods
         backoff_factor=1  # Wait time between retries
     )
     
