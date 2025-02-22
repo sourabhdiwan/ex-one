@@ -27,7 +27,7 @@
             <tbody>
                 {% for pipeline in pipelines %}
                 <tr>
-                    <td><a href="{{ url_for('individual_pipeline', project_id=project_id, pipeline_id=pipeline.id) }}">{{ pipeline.id }}</a></td>
+                    <td>{{ pipeline.id }}</td>
                     <td>{{ pipeline.status }}</td>
                     <td>{{ pipeline.ref }}</td>
                     <td>{{ pipeline.created_at }}</td>
