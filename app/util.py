@@ -1,11 +1,31 @@
 import os
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 def fetch_gitlab_data(endpoint):
     gitlab_token = os.getenv('GITLAB_TOKEN')
     headers = {"Authorization": f"Bearer {gitlab_token}"}
     url = f"https://gitlab.com/api/v4/{endpoint}"
-    response = requests.get(url, headers=headers)
+    
+    # Create a session
+    session = requests.Session()
+    
+    # Define a retry strategy
+    retry_strategy = Retry(
+        total=3,  # Number of retries
+        status_forcelist=[429, 500, 502, 503, 504],  # Retry on these status codes
+        method_whitelist=["HEAD", "GET", "OPTIONS"],  # Retry on these methods
+        backoff_factor=1  # Wait time between retries
+    )
+    
+    # Mount the retry strategy to the session
+    adapter = HTTPAdapter(max_retries=retry_strategy)
+    session.mount("https://", adapter)
+    session.mount("http://", adapter)
+    
+    # Make the request
+    response = session.get(url, headers=headers)
     
     if response.status_code == 200:
         return response.json()
