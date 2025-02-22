@@ -27,19 +27,4 @@
             <tbody>
                 {% for pipeline in pipelines %}
                 <tr>
-                    <td><a href="{{ url_for('individual_pipeline', project_id=project_id, pipeline_id=pipeline.id) }}">{{ pipeline.id }}</a></td>
-                    <td>{{ pipeline.status }}</td>
-                    <td>{{ pipeline.ref }}</td>
-                    <td>{{ pipeline.created_at }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 ex-one. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+                    <td><a href="{{ url_for('individual_pipeline', project
