@@ -1,7 +1,6 @@
 import os
 import requests
 
-# Fetch GitLab data with authentication
 def fetch_gitlab_data(endpoint):
     gitlab_token = os.getenv('GITLAB_TOKEN')
     headers = {"Authorization": f"Bearer {gitlab_token}"}
@@ -26,4 +25,9 @@ def fetch_project_data(project_id):
 # Function to fetch jobs for a pipeline
 def fetch_jobs_data(project_id, pipeline_id):
     endpoint = f"projects/{project_id}/pipelines/{pipeline_id}/jobs"
+    return fetch_gitlab_data(endpoint)
+
+# Function to fetch individual pipeline data
+def fetch_individual_pipeline_data(project_id, pipeline_id):
+    endpoint = f"projects/{project_id}/pipelines/{pipeline_id}"
     return fetch_gitlab_data(endpoint)

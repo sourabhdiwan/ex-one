@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pipeline Data - ex-one</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    {% include 'navbar.html' %}
+
+    <!-- Main Content -->
+    <main>
+        <h1>Pipeline ID: {{ pipeline.id }}</h1>
+        <p>Status: {{ pipeline.status }}</p>
+        <p>Ref: {{ pipeline.ref }}</p>
+        <p>Created At: {{ pipeline.created_at }}</p>
+        <!-- Add more pipeline details as needed -->
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 ex-one. All rights reserved.</p>
+    </footer>
+</body>
+</html>
