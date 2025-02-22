@@ -15,7 +15,7 @@
     <!-- Main Content -->
     <main>
         <h1>Pipeline Data</h1>
-        <table>
+        <table class="styled-table">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -27,4 +27,19 @@
             <tbody>
                 {% for pipeline in pipelines %}
                 <tr>
-                    <td><a href="{{ url_for('individual_pipeline', project
+                    <td><a href="{{ url_for('individual_pipeline', project_id=project_id, pipeline_id=pipeline.id) }}">{{ pipeline.id }}</a></td>
+                    <td>{{ pipeline.status }}</td>
+                    <td>{{ pipeline.ref }}</td>
+                    <td>{{ pipeline.created_at }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 ex-one. All rights reserved.</p>
+    </footer>
+</body>
+</html>
