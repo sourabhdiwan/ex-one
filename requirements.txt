@@ -4,3 +4,6 @@ psycopg2-binary
 Flask-Migrate 
 requests 
 celery 
+python-dotenv
+requests
+
