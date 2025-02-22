@@ -1,7 +1,7 @@
 import os
 from app import app
 from flask import render_template
-from app.utils import fetch_gitlab_data
+from app.util import fetch_pipeline_data, fetch_project_data, fetch_jobs_data
 
 @app.route('/')
 def index():
@@ -17,11 +17,18 @@ def login():
 
 @app.route('/pipelines')
 def pipelines():
-    gitlab_token = os.getenv('GITLAB_TOKEN')
     project_id = os.getenv('PROJECT_ID')
-    headers = {"Authorization": f"Bearer {gitlab_token}"}
-    
-    pipelines_endpoint = f"projects/{project_id}/pipelines"
-    pipelines_data = fetch_gitlab_data(pipelines_endpoint, headers)
-    
+    pipelines_data = fetch_pipeline_data(project_id)
     return render_template('pipeline.html', pipelines=pipelines_data)
+
+@app.route('/projects')
+def projects():
+    project_id = os.getenv('PROJECT_ID')
+    project_data = fetch_project_data(project_id)
+    return render_template('project.html', project=project_data)
+
+@app.route('/jobs/<int:pipeline_id>')
+def jobs(pipeline_id):
+    project_id = os.getenv('PROJECT_ID')
+    jobs_data = fetch_jobs_data(project_id, pipeline_id)
+    return render_template('jobs.html', jobs=jobs_data)
