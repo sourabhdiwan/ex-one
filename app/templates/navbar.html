@@ -1,0 +1,21 @@
+<nav class="navbar">
+    <div class="navbar-container">
+        <a href="/" class="navbar-logo">ex-one</a>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="/" class="nav-links">Home</a></li>
+            <li class="nav-item"><a href="/dashboard" class="nav-links">Dashboard</a></li>
+            <li class="nav-item"><a href="/historical" class="nav-links">Historical Data</a></li>
+            <li class="nav-item"><a href="/api" class="nav-links">API Configurations</a></li>
+        </ul>
+    </div>
+</nav>
+
+<script>
+    function toggleMenu() {
+        const navMenu = document.querySelector('.nav-menu');
+        navMenu.classList.toggle('active');
+    }
+</script>

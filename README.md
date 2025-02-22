@@ -1,54 +1,43 @@
-ex-one
-Overview
-The ex-one dashboard is a web-based application built using Python and Flask. It provides a comprehensive view of test execution cycles, leveraging data from the GitLab API and storing it in a PostgreSQL database. The dashboard includes features like current cycle status, historical data analysis, and API configuration settings.
+# ex-one
 
-Features
-Current Cycle Status:
+## Overview
+The **ex-one** dashboard is a web-based application built using Python and Flask. It provides a comprehensive view of test execution cycles, leveraging data from the GitLab API and storing it in a PostgreSQL database. The dashboard includes features like current cycle status, historical data analysis, and API configuration settings.
 
-Visual representation of the test execution cycle status using charts.
+## Features
+1. **Current Cycle Status:**
+   - Visual representation of the test execution cycle status using charts.
+   - Key metrics including tests executed, passed, failed, and pending.
 
-Key metrics including tests executed, passed, failed, and pending.
+2. **Historical Data:**
+   - Detailed view of historical test execution data with filters.
+   - Option to export historical data to CSV for further analysis.
 
-Historical Data:
+3. **API Integration:**
+   - Configuration options for GitLab API integration.
+   - Scheduled tasks for periodic data synchronization with GitLab.
 
-Detailed view of historical test execution data with filters.
+## Architecture
+- **Frontend:** HTML, CSS, JavaScript, Flask templates
+- **Backend:** Python, Flask
+- **Database:** PostgreSQL
+- **API Integration:** Python scripts for fetching data from GitLab API
+- **Scheduled Tasks:** Celery (or any other task scheduler) for periodic updates
 
-Option to export historical data to CSV for further analysis.
+### Data Flow
+1. GitLab API -> Python Script -> PostgreSQL Database -> Flask Backend -> Frontend
 
-API Integration:
+## Setup and Installation
+### Prerequisites
+- Python 3.x
+- PostgreSQL
+- GitLab account and access token
 
-Configuration options for GitLab API integration.
+### Installation Steps
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/ex-one.git
+   cd ex-one
 
-Scheduled tasks for periodic data synchronization with GitLab.
-
-Architecture
-Frontend: HTML, CSS, JavaScript, Flask templates
-
-Backend: Python, Flask
-
-Database: PostgreSQL
-
-API Integration: Python scripts for fetching data from GitLab API
-
-Scheduled Tasks: Celery (or any other task scheduler) for periodic updates
-
-Data Flow
-GitLab API -> Python Script -> PostgreSQL Database -> Flask Backend -> Frontend
-
-Setup and Installation
-Prerequisites
-Python 3.x
-
-PostgreSQL
-
-GitLab account and access token
-
-Installation Steps
-Clone the repository:
-
-bash
-git clone https://github.com/your-username/ex-one.git
-cd ex-one
 Create and activate a virtual environment:
 
 bash
